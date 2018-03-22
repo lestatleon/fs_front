@@ -10,6 +10,12 @@
       </div>
     </div>
     <br />
+    <div class="row" [hidden]="!showError">
+      <br />
+      <div class="col-xs-4 col-xs-offset-4 text-center">
+        <p class="bg-warning text-danger">Credentials are incorrect.</p>
+      </div>
+    </div>
     <div class="row">
       <form class="col-xs-4 col-xs-offset-4" [formGroup]="form" (ngSubmit)="submitForm()">
         <fieldset [disabled]="isSubmitting">
@@ -24,11 +30,6 @@
           <button class="btn btn-default" [disabled]="!form.valid" type="submit">Let me in!</button>
         </fieldset>
       </form>
-      <div class="col-xs-4">
-        <p>
-          
-        </p>
-      </div>
     </div>
   </section>
 </div>

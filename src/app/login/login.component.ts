@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
   isSubmitting = false;
+  showError = false;
 
   constructor(
     private router: Router,
@@ -37,7 +38,15 @@ export class LoginComponent implements OnInit {
     this.authService
       .attemptAuth(credentials)
       .subscribe(
-        data => this.router.navigateByUrl('/'),
+        data => {
+          console.log(data);
+          if ( !data ) {
+            this.showError = true;
+          } else {
+            this.router.navigateByUrl('/');
+          }
+          this.isSubmitting = false;
+        },
         err => {
           this.isSubmitting = false;
         }
