@@ -1,0 +1,32 @@
+<div class="container">
+    <section>
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3" [hidden]="approved">
+                <h2>Hello!</h2>
+                <div *ngIf="invitationAvailable">
+                  <p class="bg-info">You have an invitation wainting...</p>
+                  <p *ngIf="showMessage">Sender included a message for you: </p>
+                  <p *ngIf="showMessage">
+                    {{invitation.message}}
+                  </p>
+                </div>
+
+                <div *ngIf="!invitationAvailable">
+                  <p class="bg-warning">The invitation is no longer available...</p>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-xs-offset-3" [hidden]="!approved">
+              <h2>Congratulations!</h2>
+              <h3>Your invitarion is now approved.</h3>
+            </div>
+
+            <div class="col-xs-6 col-xs-offset-3" *ngIf="invitationAvailable" [hidden]="approved">
+              <button class="btn btn-success" (click)="approve()">Approve</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+

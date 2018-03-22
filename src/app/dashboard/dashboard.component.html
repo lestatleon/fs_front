@@ -1,0 +1,56 @@
+<section>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 text-right">
+        <a class="btn btn-danger" routerLink="/logout">Logout</a>
+      </div>
+    </div> 
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <h2>New Invitations</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+            <form name="formInvitation">
+                <div class="form-group">
+                    <label for="inputEmail">Email address</label>
+                    <input type="email" class="form-control" placeholder="Email" required [(ngModel)]="invitation.email" name="email">
+                </div>
+                <p>If you like, you can include a message on your invitation. (optional)</p>
+                <div class="form-group">
+                    <label for="inputMessage">Message</label>
+                    <textarea class="form-control" id="inputMessage" placeholder="Message" [(ngModel)]="invitation.message" name="message"></textarea>
+                </div>
+                <button class="btn btn-default" (click)="save()" [disabled]="isSubmitting">Send Invitation</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <h2>Current Invitations</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <table class="table table-hover">
+                <tr>
+                    <td>Email</td>
+                    <td>Status</td>
+                    <td>Viewed</td>
+                    <td>Link</td>
+                </tr>
+                <tr *ngFor="let inv of listInvitations">
+                    <td>{{ inv.email }}</td>
+                    <td>{{ inv.status_name | uppercase }}</td>
+                    <td>{{ inv.viewed_on }}</td>
+                    <td><a routerLink="/guest/{{ inv.key }}">View</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
