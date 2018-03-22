@@ -7,41 +7,41 @@ import { AuthService } from '../shared';
 
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html'
+  selector: 'app-login',
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
 
-    form: FormGroup;
-    isSubmitting = false;
+  form: FormGroup;
+  isSubmitting = false;
 
-    constructor(
-        private router: Router,
-        private fb: FormBuilder,
-        private authService: AuthService
-    ) {
-        this.form = this.fb.group({
-            'email': ['', Validators.required],
-            'password': ['', Validators.required]
-        });
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService
+  ) {
+    this.form = this.fb.group({
+      'email': ['', Validators.required],
+      'password': ['', Validators.required]
+    });
 
-    }
+  }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 
-    submitForm() {
-        this.isSubmitting = true;
+  submitForm() {
+    this.isSubmitting = true;
 
-        const credentials = this.form.value;
-        this.authService
-            .attemptAuth(credentials)
-            .subscribe(
-                data => this.router.navigateByUrl('/'),
-                err => {
-                    this.isSubmitting = false;
-                }
-            );
-    }
+    const credentials = this.form.value;
+    this.authService
+      .attemptAuth(credentials)
+      .subscribe(
+        data => this.router.navigateByUrl('/'),
+        err => {
+          this.isSubmitting = false;
+        }
+      );
+  }
 
 }

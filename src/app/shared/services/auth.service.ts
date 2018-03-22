@@ -59,7 +59,6 @@ export class AuthService {
 
     // Set auth status to false
     this.isAuthenticatedSubject.next(false);
-
   }
 
   attemptAuth(credentials): Observable<User> {

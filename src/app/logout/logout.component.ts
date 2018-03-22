@@ -16,10 +16,11 @@ export class LogoutComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.authService.purgeAuth();
+    this.router.navigateByUrl('/login');
   }
 
   signOut() {
-
     this.authService.purgeAuth();
   }
 
